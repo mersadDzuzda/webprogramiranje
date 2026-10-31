@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="bs">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Tim Burton | Tribute Page</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background:
+        radial-gradient(circle at 15% 10%, rgba(112, 52, 129, 0.18), transparent 28%),
+        radial-gradient(circle at 90% 75%, rgba(210, 93, 25, 0.12), transparent 25%),
+        #101014;
+      color: #eeeeee;
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
+    }
+
+    #main {
+      position: relative;
+      overflow: hidden;
+      width: calc(100% - 36px);
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 30px;
+      background: linear-gradient(145deg, #242128, #19181e 65%);
+      border: 1px solid #49404d;
+      border-radius: 12px;
+      box-shadow: 0 18px 55px rgba(0, 0, 0, 0.55);
+    }
+
+    #main::before,
+    #main::after {
+      position: absolute;
+      z-index: 0;
+      color: rgba(220, 112, 35, 0.12);
+      pointer-events: none;
+      line-height: 1;
+    }
+
+    #main::before {
+      content: "✦";
+      top: 230px;
+      right: 35px;
+      font-size: 95px;
+      transform: rotate(15deg);
+    }
+
+    #main::after {
+      content: "☾";
+      top: 35px;
+      left: 35px;
+      font-size: 65px;
+      color: rgba(205, 190, 220, 0.10);
+    }
+
+    header,
+    #img-div,
+    #tribute-info,
+    footer {
+      position: relative;
+      z-index: 1;
+    }
+
+    header {
+      text-align: center;
+      padding: 35px 15px 25px;
+      border-bottom: 1px solid #48404b;
+    }
+
+    .eyebrow {
+      display: inline-block;
+      margin: 0 0 12px;
+      padding: 5px 14px;
+      border: 1px solid #80512f;
+      border-radius: 30px;
+      color: #f0a45f;
+      font-size: 0.75rem;
+      font-weight: bold;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+    }
+
+    #title {
+      margin: 0;
+      padding-top: 5px;
+      color: #f4eee9;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      letter-spacing: 5px;
+      line-height: 1.2;
+      text-transform: uppercase;
+      text-shadow: 3px 3px 0 #713c27, 0 0 22px rgba(224, 112, 43, 0.22);
+    }
+
+    #title h1 {
+      margin: 0;
+      font-weight: 500;
+    }
+
+    header p {
+      margin: 14px 0 0;
+      color: #c4b9c8;
+      font-size: 1.05rem;
+      letter-spacing: 1px;
+    }
+
+    .divider {
+      width: 85px;
+      height: 3px;
+      margin: 22px auto 0;
+      background: #d87832;
+      border-radius: 5px;
+    }
+
+   #img-div {
+    position: relative;
+    overflow: visible;
+    margin: 38px 20px 48px;
+    padding: 22px;
+    color: #eee4dc;
+    text-align: center;
+    background:
+        radial-gradient(circle at 88% 12%, rgba(238, 139, 55, 0.18), transparent 20%),
+        linear-gradient(145deg, #17131d, #29202b 58%, #17151a);
+    border: 1px solid #75452f;
+    border-radius: 10px;
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.38);
+}
+#img-div::before {
+    content: "☾";
+    position: absolute;
+    top: 4px;
+    right: 24px;
+    color: rgba(246, 169, 94, 0.28);
+    font-size: 78px;
+}
+
+#img-div::after {
+    content: "✦   ·   ✧";
+    position: absolute;
+    top: 28px;
+    left: 25px;
+    color: rgba(246, 169, 94, 0.55);
+    font-size: 20px;
+    letter-spacing: 8px;
+}
+
+#image {
+    position: relative;
+    z-index: 2;
+    display: block;
+    max-width: 100%;
+    height: auto;
+    max-height: 520px;
+    margin: 0 auto;
+    object-fit: cover;
+    border: 1px solid #a65d35;
+    border-radius: 6px;
+    box-shadow: 0 0 0 7px rgba(12, 10, 15, 0.55),
+                0 12px 28px rgba(0, 0, 0, 0.55);
+}
+
+#img-caption {
+    position: relative;
+    z-index: 1;
+    max-width: 790px;
+    margin: 0 auto;
+    padding: 17px 20px 5px;
+    color: #e8d8cb;
+    border-top: 1px solid rgba(220, 132, 70, 0.45);
+    font-family: Georgia, "Times New Roman", serif;
+    font-size: 0.98rem;
+    font-style: italic;
+}
+
+
+
+    #tribute-info {
+      max-width: 850px;
+      margin: 30px auto;
+      padding: 10px 20px;
+    }
+
+    h2 {
+      position: relative;
+      margin: 42px 0 24px;
+      color: #f0a45f;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.65rem;
+      font-weight: normal;
+      text-align: center;
+    }
+
+    h2::after {
+      content: "";
+      display: block;
+      width: 55px;
+      height: 2px;
+      margin: 10px auto 0;
+      background: #78472e;
+    }
+
+    #tribute-info > p {
+      color: #d2cbd5;
+      text-align: justify;
+    }
+
+    ul {
+      position: relative;
+      margin: 28px 0;
+      padding: 0 0 0 30px;
+      list-style: none;
+      border-left: 2px solid #70452f;
+    }
+
+    li {
+      position: relative;
+      margin: 0 0 19px;
+      padding: 13px 16px;
+      color: #d7d3da;
+      background: rgba(255, 255, 255, 0.035);
+      border: 1px solid rgba(193, 133, 91, 0.14);
+      border-radius: 5px;
+      transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+
+    li::before {
+      content: "";
+      position: absolute;
+      top: 21px;
+      left: -38px;
+      width: 12px;
+      height: 12px;
+      background: #e28a43;
+      border: 3px solid #242128;
+      border-radius: 50%;
+      box-shadow: 0 0 0 1px #a65c31;
+    }
+
+    li:hover {
+      background: rgba(210, 120, 50, 0.09);
+      transform: translateX(4px);
+    }
+
+    li strong {
+      color: #f0a45f;
+    }
+
+    #quote {
+      margin: 45px 0;
+      padding: 28px 30px;
+      background: linear-gradient(120deg, #17151c, #25202a);
+      border-left: 4px solid #d87832;
+      border-radius: 0 7px 7px 0;
+      color: #e5e0e7;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+    }
+
+    #quote p {
+      margin: 0 0 10px;
+      color: #f0dfd0;
+      font-family: Georgia, "Times New Roman", serif;
+      font-size: 1.2rem;
+      font-style: italic;
+    }
+
+    #quote figcaption {
+      color: #e49a5d;
+      text-align: right;
+      font-size: 0.9rem;
+    }
+
+    .source {
+      color: #aaa3ae;
+      font-size: 0.8rem;
+      text-align: center;
+    }
+
+    a {
+      color: #f0a45f;
+      text-decoration: none;
+      transition: color 0.2s ease;
+    }
+
+    a:hover {
+      color: #ffd2a5;
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: 45px;
+      padding: 25px 10px 5px;
+      border-top: 1px solid #48404b;
+      color: #aaa3ae;
+      text-align: center;
+    }
+
+    footer p {
+      margin: 8px 0;
+    }
+
+    @media (max-width: 600px) {
+      #main {
+        width: 100%;
+        margin: 0;
+        padding: 15px;
+        border: 0;
+        border-radius: 0;
+      }
+
+      header {
+        padding: 28px 8px 22px;
+      }
+
+      #title {
+        letter-spacing: 3px;
+      }
+
+      #img-div {
+        margin: 25px 0 35px;
+        padding: 10px 8px;
+      }
+
+      #tribute-info {
+        padding: 5px;
+      }
+
+      h2 {
+        font-size: 1.4rem;
+      }
+
+      ul {
+        padding-left: 22px;
+      }
+
+      li::before {
+        left: -30px;
+      }
+
+      #quote {
+        padding: 22px;
+      }
+    }
+    /* OMOTAC FOTOGRAFIJE */
+
+.image-wrap {
+    position: relative;
+    display: table;
+    max-width: 100%;
+    margin: 12px auto 22px;
+}
+
+/* FOTOGRAFIJA */
+
+#image {
+    position: relative;
+    z-index: 2;
+    display: block;
+}
+
+/* SISMISI */
+
+.bats {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    pointer-events: none;
+}
+
+.bats span {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    display: block;
+
+    font-size: 32px;
+    opacity: 0;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    transition:
+        transform 1s cubic-bezier(.17,.67,.35,1.4),
+        opacity 0.3s ease;
+}
+
+/* PUTANJE LETENJA */
+
+.bats span:nth-child(1) {
+    --x: -200px;
+    --y: -150px;
+    --r: -35deg;
+}
+
+.bats span:nth-child(2) {
+    --x: 200px;
+    --y: -160px;
+    --r: 35deg;
+}
+
+.bats span:nth-child(3) {
+    --x: -250px;
+    --y: 0px;
+    --r: -20deg;
+}
+
+.bats span:nth-child(4) {
+    --x: 250px;
+    --y: 20px;
+    --r: 25deg;
+}
+
+.bats span:nth-child(5) {
+    --x: -170px;
+    --y: 150px;
+    --r: 30deg;
+}
+
+.bats span:nth-child(6) {
+    --x: 170px;
+    --y: 160px;
+    --r: -30deg;
+}
+
+/* IZLIJETANJE NA HOVER */
+
+.image-wrap:hover .bats span {
+    opacity: 1;
+
+    animation: fly-out 1s ease-out forwards,
+               flap-wings 0.18s ease-in-out infinite alternate;
+}
+
+/* ANIMACIJA IZLIJETANJA */
+
+@keyframes fly-out {
+    0% {
+        transform: translate(-50%, -50%) scale(0);
+    }
+
+    60% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--r))
+            scale(1.4);
+    }
+
+    100% {
+        transform:
+            translate(
+                calc(-50% + var(--x)),
+                calc(-50% + var(--y))
+            )
+            rotate(var(--r))
+            scale(1.2);
+    }
+}
+
+/* MAHANJE KRILIMA */
+
+@keyframes flap-wings {
+    from {
+        filter: brightness(0.8);
+    }
+
+    to {
+        filter: brightness(1.5);
+    }
+}
+
+/* RAZLICITO VRIJEME IZLIJETANJA */
+
+.image-wrap:hover .bats span:nth-child(2) {
+    animation-delay: 0.08s, 0s;
+}
+
+.image-wrap:hover .bats span:nth-child(3) {
+    animation-delay: 0.15s, 0s;
+}
+
+.image-wrap:hover .bats span:nth-child(4) {
+    animation-delay: 0.22s, 0s;
+}
+
+.image-wrap:hover .bats span:nth-child(5) {
+    animation-delay: 0.12s, 0s;
+}
+
+.image-wrap:hover .bats span:nth-child(6) {
+    animation-delay: 0.28s, 0s;
+}
+
+/* POSTEPENI POVRATAK IZA FOTOGRAFIJE */
+
+.image-wrap:not(:hover) .bats span {
+    opacity: 0;
+    animation: none;
+
+    transform: translate(-50%, -50%) scale(0);
+
+    transition:
+        transform 0.5s ease-in,
+        opacity 0.3s ease;
+}
+  </style>
+</head>
+<body>
+  <main id="main">
+    <header>
+      <p class="eyebrow">A Halloween Tribute</p>
+      <div id="title">
+        <h1>Tim Burton</h1>
+      </div>
+      <p>Čovjek koji je čudno pretvorio u umjetnost</p>
+      <div class="divider"></div>
+    </header>
+
+   <figure id="img-div">
+
+    <div class="image-wrap">
+
+        <div class="bats" aria-hidden="true">
+            <span>🦇</span>
+            <span>🦇</span>
+            <span>🦇</span>
+            <span>🦇</span>
+            <span>🦇</span>
+            <span>🦇</span>
+        </div>
+
+        <img
+            id="image"
+            src="https://upload.wikimedia.org/wikipedia/commons/9/95/Tim_Burton-63605.jpg"
+            alt="Filmski režiser Tim Burton na filmskom festivalu u Veneciji 2024. godine"
+        >
+
+    </div>
+
+    <figcaption id="img-caption">
+        <strong style="display: block; color: #f0a45f;
+        font-family: Arial; font-size: 12px;
+        letter-spacing: 3px; margin-bottom: 8px;">
+            DOBRODOŠLI U BURTONOV SVIJET
+        </strong>
+        Između sjene i mašte, Tim Burton stvara neobične
+        svjetove u kojima se susreću gotika, crni humor
+        i čarolija Noći vještica.
+    </figcaption>
+
+</figure>
+
+    <section id="tribute-info">
+      <h2>Život i karijera</h2>
+      <p>
+        Timothy Walter Burton rođen je 25. augusta 1958. godine u Burbanku,
+        Kalifornija. Još kao dječak pokazivao je veliko interesovanje za crtanje,
+        animaciju i horor filmove. Njegova mašta, ljubav prema neobičnim likovima
+        i specifičan osjećaj za humor kasnije su postali zaštitni znak njegovih
+        filmova. Burton je stvorio prepoznatljiv filmski svijet u kojem se
+        isprepliću gotika, fantastika, crni humor i emocije.
+      </p>
+
+      <h2>Vremenska linija života i stvaralaštva</h2>
+      <ul>
+        <li><strong>1958.</strong> – Rođen je 25. augusta u Burbanku, savezna država Kalifornija, SAD.</li>
+        <li><strong>1970-e.</strong> – Razvija interesovanje za crtanje, animaciju i filmsku umjetnost. Studira animaciju na California Institute of the Arts (CalArts).</li>
+        <li><strong>1979.</strong> – Počinje raditi u studiju Walt Disney kao animator.</li>
+        <li><strong>1982.</strong> – Režira kratki animirani film <em>Vincent</em>, inspirisan glumcem Vincentom Priceom.</li>
+        <li><strong>1985.</strong> – Režira svoj prvi dugometražni film, <em>Pee-wee's Big Adventure</em>.</li>
+        <li><strong>1988.</strong> – Film <em>Beetlejuice</em> donosi mu veliku popularnost i potvrđuje njegov neobičan stil.</li>
+        <li><strong>1989.</strong> – Režira veliki filmski hit <em>Batman</em>.</li>
+        <li><strong>1990.</strong> – Objavljuje <em>Edward Scissorhands</em>, jedan od svojih najpoznatijih i najvoljenijih filmova.</li>
+        <li><strong>1993.</strong> – Nastaje <em>The Nightmare Before Christmas</em>, kultni stop-motion animirani film koji je Burton osmislio i producirao.</li>
+        <li><strong>2005.</strong> – Režira animirani film <em>Corpse Bride</em>, poznat po stop-motion tehnici i gotičkoj estetici.</li>
+        <li><strong>2007.</strong> – Režira mjuzikl <em>Sweeney Todd: The Demon Barber of Fleet Street</em>.</li>
+        <li><strong>2012.</strong> – Predstavlja dugometražnu stop-motion verziju filma <em>Frankenweenie</em>.</li>
+        <li><strong>2022.</strong> – Režira epizode popularne Netflixove serije <em>Wednesday</em>.</li>
+        <li><strong>2024.</strong> – Vraća se svijetu filma <em>Beetlejuice</em> nastavkom <em>Beetlejuice Beetlejuice</em> i dobija svoju zvijezdu na Hollywood Walk of Fame.</li>
+      </ul>
+
+      <figure id="quote">
+        <p>
+          „Jedna osoba smatra nešto ludim, a za drugu je to stvarnost.“
+        </p>
+        <figcaption>— Tim Burton</figcaption>
+      </figure>
+
+      <p>
+        Tim Burton je mnogo više od filmskog režisera. Njegova djela podsjećaju
+        nas da različitost, mašta i kreativnost mogu biti najveća snaga pojedinca.
+        Kroz svoje filmove dao je prostor likovima koji ne pripadaju uobičajenom
+        svijetu, ali upravo zbog toga ostaju nezaboravni.
+      </p>
+
+      <p class="source">
+        <small>
+          Izvori informacija:
+          <a href="https://timburton.com/about-tim/" target="_blank" rel="noopener noreferrer">Tim Burton – Official Website</a>,
+          <a href="https://www.festival-cannes.com/en/p/tim-burton/" target="_blank" rel="noopener noreferrer">Festival de Cannes</a> i
+          <a href="https://walkoffame.com/tim-burton/" target="_blank" rel="noopener noreferrer">Hollywood Walk of Fame</a>.
+        </small>
+      </p>
+    </section>
+
+    <footer>
+      <p>
+        Više o njegovom životu i filmovima pročitajte na
+        <a id="tribute-link" href="https://timburton.com/" target="_blank" rel="noopener noreferrer">službenoj stranici Tima Burtona</a>.
+      </p>
+      <p>Tribute Webpage Challenge | 2026</p>
+    </footer>
+  </main>
+</body>
+</html>
